@@ -5,15 +5,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@android:drawable/sym_def_app_icon"
-        android:<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.DalaDalaWater" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@color/navy</item>
-        <item name="android:statusBarColor">@color/navy</item>
-    </style>
-</resources>
-label="@string/app_name"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.DalaDalaWater">
 
@@ -22,15 +14,9 @@ label="@string/app_name"
             android:exported="true"
             android:screenOrientation="portrait">
 
-            <!-- ✏️  REPLACE THIS URL with your live Vercel URL after deploying -->
             <meta-data
                 android:name="android.support.customtabs.trusted.DEFAULT_URL"
                 android:value="https://akyturiy-solutions-dala-dala-water.vercel.app" />
-
-            <!-- Splash screen colour while PWA loads -->
-            <meta-data
-                android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
-                android:value="@drawable/splash_icon"/>
 
             <meta-data
                 android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
@@ -40,13 +26,8 @@ label="@string/app_name"
                 android:name="android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION"
                 android:value="500"/>
 
-            <!-- Status bar colour -->
             <meta-data
                 android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
-                android:value="@color/navy"/>
-
-            <meta-data
-                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR_DARK"
                 android:value="@color/navy"/>
 
             <intent-filter>
@@ -54,12 +35,10 @@ label="@string/app_name"
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
-            <!-- Deep link: handles the live domain -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <!-- ✏️  REPLACE with your real domain -->
                 <data android:scheme="https"
                       android:host="akyturiy-solutions-dala-dala-water.vercel.app"/>
             </intent-filter>
