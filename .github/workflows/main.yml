@@ -20,8 +20,6 @@ jobs:
           gradle-version: '8.4'
       - name: Build Debug APK
         run: cd DalaDalaWater-TWA && gradle assembleDebug --stacktrace
-        env:
-            JAVA_TOOL_OPTIONS: "Xmx2048m"
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
