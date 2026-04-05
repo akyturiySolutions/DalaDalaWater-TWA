@@ -14,19 +14,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Fix wrapper and properties
-        run: |
-          echo "distributionBase=GRADLE_USER_HOME" > DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
-          echo "distributionPath=wrapper/dists" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
-          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
-          echo "zipStoreBase=GRADLE_USER_HOME" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
-          echo "zipStorePath=wrapper/dists" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
-          echo "org.gradle.jvmargs=-Xmx2048m" > DalaDalaWater-TWA/gradle.properties
-          echo "android.useAndroidX=true" >> DalaDalaWater-TWA/gradle.properties
-          echo "android.enableJetifier=true" >> DalaDalaWater-TWA/gradle.properties
-          echo "org.gradle.daemon=false" >> DalaDalaWater-TWA/gradle.properties
       - name: Make gradlew executable
         run: chmod +x DalaDalaWater-TWA/gradlew
+      - name: Patch gradlew memory
+        run: |
+          sed -i 's/-Xmx64m/-Xmx1536m/g' DalaDalaWater-TWA/gradlew
+          sed -i 's/-Xmx64m/-Xmx1536m/g' DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          cat DalaDalaWater-TWA/gradlew | grep Xmx
       - name: Build Debug APK
         run: cd DalaDalaWater-TWA && ./gradlew assembleDebug --stacktrace
       - name: Upload Debug APK
