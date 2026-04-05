@@ -27,7 +27,7 @@ jobs:
       - name: Build Debug APK
         run: cd DalaDalaWater-TWA && ./gradlew assembleDebug --stacktrace
         env:
-          JAVA_TOOL_OPTIONS: "-Xmx1536m"
+          JAVA_TOOL_OPTIONS: "Xmx1536m"
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
