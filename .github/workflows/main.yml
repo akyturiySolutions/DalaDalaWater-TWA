@@ -14,6 +14,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Fix gradle properties
+        run: |
+          echo "org.gradle.jvmargs=-Xmx1536m -XX:MaxMetaspaceSize=512m" > DalaDalaWater-TWA/gradle.properties
+          echo "android.useAndroidX=true" >> DalaDalaWater-TWA/gradle.properties
+          echo "android.enableJetifier=true" >> DalaDalaWater-TWA/gradle.properties
+          echo "org.gradle.daemon=false" >> DalaDalaWater-TWA/gradle.properties
       - name: Make gradlew executable
         run: chmod +x DalaDalaWater-TWA/gradlew
       - name: Build Debug APK
