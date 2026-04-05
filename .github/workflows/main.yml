@@ -15,11 +15,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Make gradlew executable
-        run: chmod +x gradlew
+        run: chmod +x DalaDalaWater-TWA/gradlew
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: cd DalaDalaWater-TWA && ./gradlew assembleDebug --stacktrace
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: DalaDalaWater-DEBUG
-          path: app/build/outputs/apk/debug/*.apk
+          path: DalaDalaWater-TWA/app/build/outputs/apk/debug/*.apk
