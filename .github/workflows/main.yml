@@ -14,9 +14,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Fix gradle properties
+      - name: Fix wrapper and properties
         run: |
-          echo "org.gradle.jvmargs=-Xmx1536m -XX:MaxMetaspaceSize=512m" > DalaDalaWater-TWA/gradle.properties
+          echo "distributionBase=GRADLE_USER_HOME" > DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          echo "distributionPath=wrapper/dists" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          echo "zipStoreBase=GRADLE_USER_HOME" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          echo "zipStorePath=wrapper/dists" >> DalaDalaWater-TWA/gradle/wrapper/gradle-wrapper.properties
+          echo "org.gradle.jvmargs=-Xmx2048m" > DalaDalaWater-TWA/gradle.properties
           echo "android.useAndroidX=true" >> DalaDalaWater-TWA/gradle.properties
           echo "android.enableJetifier=true" >> DalaDalaWater-TWA/gradle.properties
           echo "org.gradle.daemon=false" >> DalaDalaWater-TWA/gradle.properties
