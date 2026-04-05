@@ -14,15 +14,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Make gradlew executable
-        run: chmod +x DalaDalaWater-TWA/gradlew
+      - name: Install Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.0'
       - name: Build Debug APK
-        run: cd DalaDalaWater-TWA && ./gradlew assembleDebug --stacktrace
-        env:
-          JAVA_TOOL_OPTIONS: ""
-          GRADLE_OPTS: ""
-          _JAVA_OPTIONS: ""
-          JVM_OPTS: ""
+        run: cd DalaDalaWater-TWA && gradle assembleDebug --stacktrace
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
